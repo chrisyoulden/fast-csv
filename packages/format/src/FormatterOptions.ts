@@ -20,6 +20,7 @@ export interface FormatterOptionsArgs<I extends Row, O extends Row> {
     writeBOM?: boolean;
     transform?: RowTransformFunction<I, O>;
     alwaysWriteHeaders?: boolean;
+    highWaterMark?: number;
 }
 
 export class FormatterOptions<I extends Row, O extends Row> {
@@ -52,6 +53,8 @@ export class FormatterOptions<I extends Row, O extends Row> {
     public readonly BOM: string = '\ufeff';
 
     public readonly alwaysWriteHeaders: boolean = false;
+
+    public readonly highWaterMark: number = 16;
 
     public constructor(opts: FormatterOptionsArgs<I, O> = {}) {
         Object.assign(this, opts || {});
